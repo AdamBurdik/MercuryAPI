@@ -15,6 +15,10 @@ public enum MercuryAttribute implements Translatable {
 	@Nullable
 	private final Attribute bukkitAttribute;
 
+	public Attribute bukkitAttribute() {
+		return bukkitAttribute;
+	}
+
 	MercuryAttribute() {
 		this(null);
 	}
