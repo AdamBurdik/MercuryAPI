@@ -13,13 +13,18 @@ import java.util.Collection;
 public interface MercuryAttributeInstance {
 
 	/**
+	 * Retrieves the current value;
+	 * @return attribute value.
+	 */
+	double value();
+
+	/**
 	 * Sets a new value for this attribute instance.
 	 *
 	 * @param value the new value to set
 	 * @return the updated attribute instance
 	 */
-	@NotNull
-	MercuryAttributeInstance setValue(double value);
+	@NotNull MercuryAttributeInstance setValue(double value);
 
 	/**
 	 * Adds a modifier to this attribute instance, which can change its final value.
@@ -28,8 +33,7 @@ public interface MercuryAttributeInstance {
 	 * @param modifier the modifier to add
 	 * @return the updated attribute instance
 	 */
-	@NotNull
-	MercuryAttributeInstance addModifier(@NotNull Key key, @NotNull MercuryAttributeModifier modifier);
+	@NotNull MercuryAttributeInstance addModifier(@NotNull Key key, @NotNull MercuryAttributeModifier modifier);
 
 	/**
 	 * Removes a modifier from this attribute instance, if it exists.
@@ -37,8 +41,7 @@ public interface MercuryAttributeInstance {
 	 * @param key the key of the modifier to remove
 	 * @return the removed modifier if it existed, {@code null} otherwise
 	 */
-	@Nullable
-	MercuryAttributeModifier removeModifier(@NotNull Key key);
+	@Nullable MercuryAttributeModifier removeModifier(@NotNull Key key);
 
 	/**
 	 * Retrieves a specific modifier from this attribute instance by its key.
@@ -46,16 +49,14 @@ public interface MercuryAttributeInstance {
 	 * @param key the key of the modifier to retrieve
 	 * @return the modifier if present, {@code null} otherwise
 	 */
-	@Nullable
-	MercuryAttributeModifier get(@Nullable Key key);
+	@Nullable MercuryAttributeModifier get(@NotNull Key key);
 
 	/**
 	 * Gets all the modifiers currently applied to this attribute instance.
 	 *
 	 * @return a collection of all modifiers
 	 */
-	@NotNull
-	Collection<MercuryAttributeModifier> getModifiers();
+	@NotNull Collection<MercuryAttributeModifier> getModifiers();
 
 	/**
 	 * Clears all modifiers applied to this attribute instance.
