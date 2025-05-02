@@ -8,6 +8,9 @@ import org.bukkit.entity.EntityType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
  * Represents a configuration section or structured data node within the Mercury configuration system.<br>
  *
@@ -348,4 +351,6 @@ public interface MercuryTable {
 		}
 		return value;
 	}
+
+	Set<Map.Entry<String, Object>> dottedEntrySet(boolean includeTables);
 }
