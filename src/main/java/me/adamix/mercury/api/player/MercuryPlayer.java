@@ -1,5 +1,6 @@
 package me.adamix.mercury.api.player;
 
+import me.adamix.mercury.api.attribute.AttributeContainer;
 import me.adamix.mercury.api.player.inventory.MercuryPlayerInventory;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
@@ -37,6 +38,12 @@ public interface MercuryPlayer {
 	 * @return {@link MercuryPlayerInventory} instance.
 	 */
 	@NotNull MercuryPlayerInventory getInventory();
+
+	/**
+	 * Retrieves the player attribute container.
+	 * @return {@link AttributeContainer} instance.
+	 */
+	@NotNull AttributeContainer getAttributeContainer();
 
 	/**
 	 * Sets the translation of player.
