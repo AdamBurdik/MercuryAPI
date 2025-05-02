@@ -3,6 +3,7 @@ package me.adamix.mercury.api;
 import me.adamix.mercury.api.data.DataInstance;
 import me.adamix.mercury.api.data.DataManager;
 import me.adamix.mercury.api.entity.MercuryEntity;
+import me.adamix.mercury.api.placeholder.PlaceholderManager;
 import me.adamix.mercury.api.player.MercuryPlayer;
 import me.adamix.mercury.api.player.PlayerManager;
 import me.adamix.mercury.api.task.MercuryTask;
@@ -77,6 +78,13 @@ public abstract class MercuryCore {
 	@ApiStatus.Internal
 	public abstract DataManager getDataManager();
 
+	/**
+	 * Retrieves placeholder manager instance.
+	 * @return {@link PlaceholderManager} instance.
+	 */
+	@ApiStatus.Internal
+	public abstract PlaceholderManager getPlaceholderManager();
+
 
 
 
@@ -98,6 +106,16 @@ public abstract class MercuryCore {
 	@ApiStatus.Internal
 	public static PlayerManager playerManager() {
 		return getInstance().getPlayerManager();
+	}
+
+	/**
+	 * Retrieves placeholder manager instance.
+	 * @return {@link PlaceholderManager} instance.
+	 * @throws IllegalStateException if core instance has not been set.
+	 */
+	@ApiStatus.Internal
+	public static PlaceholderManager placeholderManager() {
+		return getInstance().getPlaceholderManager();
 	}
 
 	/**
