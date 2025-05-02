@@ -1,5 +1,7 @@
 package me.adamix.mercury.api;
 
+import me.adamix.mercury.api.data.DataInstance;
+import me.adamix.mercury.api.data.DataManager;
 import me.adamix.mercury.api.entity.MercuryEntity;
 import me.adamix.mercury.api.player.MercuryPlayer;
 import me.adamix.mercury.api.player.PlayerManager;
@@ -7,6 +9,7 @@ import me.adamix.mercury.api.task.MercuryTask;
 import me.adamix.mercury.api.translation.MercuryTranslation;
 import me.adamix.mercury.api.translation.TranslationManager;
 import org.apache.commons.lang3.NotImplementedException;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
@@ -67,6 +70,12 @@ public abstract class MercuryCore {
 	@ApiStatus.Internal
 	public abstract PlayerManager getPlayerManager();
 
+	/**
+	 * Retrieves data manager instance.
+	 * @return {@link DataManager} instance.
+	 */
+	@ApiStatus.Internal
+	public abstract DataManager getDataManager();
 
 
 
@@ -132,5 +141,45 @@ public abstract class MercuryCore {
 	public static @NotNull MercuryTask runDelayed(long delay, @NotNull Runnable runnable) {
 		// ToDO figure out how to manage tasks
 		throw new NotImplementedException();
+	}
+
+	/**
+	 * Loads data from database into cache.
+	 * @param uuid unique id of data.
+	 * @param clazz the class of data to load.
+	 * @param <T> the type of data. Must implement {@link DataInstance}.
+	 */
+	public static <T extends DataInstance> void loadData(@NotNull UUID uuid, Class<T> clazz) {
+		getInstance().getDataManager().loadData(uuid, clazz);
+	}
+
+	/**
+	 * Unloads data from cache. DOES NOT SAVE TO DATABASE
+	 * @param uuid unique id of data.
+	 * @param <T> the type of data. Must implement {@link DataInstance}.
+	 */
+	public static <T extends DataInstance> void unloadData(@NotNull UUID uuid, Class<T> clazz) {
+		getInstance().getDataManager().unloadData(uuid, clazz);
+	}
+
+	/**
+	 * Retrieves data from cache.
+	 * @param uuid unique id of data.
+	 * @param clazz the class of data to retrieve.
+	 * @return {@link T} instance.
+	 * @param <T> the type of data. Must implement {@link DataInstance}.
+	 */
+	public static <T extends DataInstance> @NotNull T getData(@NotNull UUID uuid, Class<T> clazz) {
+		return getInstance().getDataManager().getData(uuid, clazz);
+	}
+
+	/**
+	 * Saves data from cache to database. DOES NOT UNLOAD FROM CACHE
+	 * @param uuid unique id of data.
+	 * @param clazz the class of data to save.
+	 * @param <T> the type of data. Must implement {@link DataInstance}
+	 */
+	public static <T extends DataInstance> void saveData(@NotNull UUID uuid, Class<T> clazz) {
+		getInstance().getDataManager().saveData(uuid, clazz);
 	}
 }
