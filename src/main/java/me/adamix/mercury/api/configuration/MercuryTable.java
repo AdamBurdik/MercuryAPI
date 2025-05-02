@@ -353,4 +353,7 @@ public interface MercuryTable {
 	}
 
 	Set<Map.Entry<String, Object>> dottedEntrySet(boolean includeTables);
+
+	Set<String> keySet();
+	Set<String> dottedKeySet();
 }
