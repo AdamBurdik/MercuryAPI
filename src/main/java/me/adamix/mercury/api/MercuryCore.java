@@ -34,7 +34,7 @@ public abstract class MercuryCore {
 	 * @throws IllegalStateException if mercury core is already loaded.
 	 */
 	@ApiStatus.Internal
-	public abstract void load();
+	public abstract void load(@NotNull MercuryAPI api);
 
 	/**
 	 * Unloads and saves all necessary stuff from mercury core.
