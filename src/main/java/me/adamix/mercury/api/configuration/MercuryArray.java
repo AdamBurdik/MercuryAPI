@@ -7,6 +7,9 @@ import org.bukkit.entity.EntityType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
  * The MercuryArray interface defines methods for accessing array data in a configuration.
  * This interface is used to interact with an array of items within a configuration.
@@ -253,4 +256,6 @@ public interface MercuryArray {
 	default @NotNull EntityType getEntityTypeSafe(int index) {
 		return EntityType.fromName(getString(index));
 	}
+
+	Set<Map.Entry<String, Object>> dottedEntrySet(boolean includeTables);
 }
