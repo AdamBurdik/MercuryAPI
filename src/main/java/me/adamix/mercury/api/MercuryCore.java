@@ -6,6 +6,7 @@ import me.adamix.mercury.api.entity.MercuryEntity;
 import me.adamix.mercury.api.placeholder.PlaceholderManager;
 import me.adamix.mercury.api.player.MercuryPlayer;
 import me.adamix.mercury.api.player.PlayerManager;
+import me.adamix.mercury.api.protocol.MercuryProtocol;
 import me.adamix.mercury.api.task.MercuryTask;
 import me.adamix.mercury.api.translation.MercuryTranslation;
 import me.adamix.mercury.api.translation.TranslationManager;
@@ -86,6 +87,13 @@ public abstract class MercuryCore {
 	public abstract PlaceholderManager getPlaceholderManager();
 
 
+	/**
+	 * Retrieves protocol instance.
+	 * @return {@link MercuryProtocol} instance.
+	 */
+	@ApiStatus.Internal
+	public abstract MercuryProtocol getProtocol();
+
 
 
 	/**
@@ -116,6 +124,16 @@ public abstract class MercuryCore {
 	@ApiStatus.Internal
 	public static PlaceholderManager placeholderManager() {
 		return getInstance().getPlaceholderManager();
+	}
+
+	/**
+	 * Retrieves protocol instance.
+	 * @return {@link MercuryProtocol} instance.
+	 * @throws IllegalStateException if core instance has not been set.
+	 */
+	@ApiStatus.Internal
+	public static MercuryProtocol protocol() {
+		return getInstance().getProtocol();
 	}
 
 	/**
