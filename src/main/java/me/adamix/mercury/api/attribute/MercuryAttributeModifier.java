@@ -13,12 +13,16 @@ public interface MercuryAttributeModifier {
 
 	@NotNull AttributeModifier toBukkit();
 
-	public static enum Operation {
+	enum Operation {
 		ADD_VALUE(AttributeModifier.Operation.ADD_NUMBER),
 		MULTIPLY_BASE(AttributeModifier.Operation.ADD_SCALAR),
 		MULTIPLY_TOTAL(AttributeModifier.Operation.MULTIPLY_SCALAR_1);
 
 		private final AttributeModifier.Operation bukkitOperation;
+
+		public AttributeModifier.Operation bukkitOperation() {
+			return this.bukkitOperation;
+		}
 
 		Operation(AttributeModifier.Operation bukkitOperation) {
 			this.bukkitOperation = bukkitOperation;
