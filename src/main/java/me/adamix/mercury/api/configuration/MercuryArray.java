@@ -1,5 +1,6 @@
 package me.adamix.mercury.api.configuration;
 
+import me.adamix.mercury.api.exception.configuration.MissingConfigurationPropertyException;
 import net.kyori.adventure.key.Key;
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
@@ -11,6 +12,12 @@ import org.jetbrains.annotations.Nullable;
  * This interface is used to interact with an array of items within a configuration.
  */
 public interface MercuryArray {
+	/**
+	 * Retrieves the name of the configuration source.
+	 *
+	 * @return The name of the configuration source.
+	 */
+	@NotNull String name();
 
 	/**
 	 * Returns the size of the array.
@@ -68,7 +75,7 @@ public interface MercuryArray {
 	 * @return The integer value at the specified index.
 	 * @throws IndexOutOfBoundsException if the index is invalid.
 	 */
-	@NotNull Integer getIntegerSafe(int index);
+	int getIntegerSafe(int index);
 
 	/**
 	 * Retrieves a long value at the given index.
@@ -85,7 +92,7 @@ public interface MercuryArray {
 	 * @return The long value at the specified index.
 	 * @throws IndexOutOfBoundsException if the index is invalid.
 	 */
-	@NotNull Long getLongSafe(int index);
+	long getLongSafe(int index);
 
 	/**
 	 * Retrieves a float value at the given index.
@@ -102,7 +109,7 @@ public interface MercuryArray {
 	 * @return The float value at the specified index.
 	 * @throws IndexOutOfBoundsException if the index is invalid.
 	 */
-	@NotNull Float getFloatSafe(int index);
+	float getFloatSafe(int index);
 
 	/**
 	 * Retrieves a double value at the given index.
@@ -119,7 +126,7 @@ public interface MercuryArray {
 	 * @return The double value at the specified index.
 	 * @throws IndexOutOfBoundsException if the index is invalid.
 	 */
-	@NotNull Double getDoubleSafe(int index);
+	double getDoubleSafe(int index);
 
 	/**
 	 * Retrieves a boolean value at the given index.
@@ -136,7 +143,7 @@ public interface MercuryArray {
 	 * @return The boolean value at the specified index.
 	 * @throws IndexOutOfBoundsException if the index is invalid.
 	 */
-	@NotNull Boolean getBooleanSafe(int index);
+	boolean getBooleanSafe(int index);
 
 	/**
 	 * Retrieves a MercuryArray object at the given index.
@@ -178,7 +185,13 @@ public interface MercuryArray {
 	 * @param index The index of the Key object in the array.
 	 * @return The Key object at the specified index, or null if not found.
 	 */
-	@Nullable Key getKey(int index);
+	default @Nullable Key getKey(int index) {
+		String string = getString(index);
+		if (string == null) {
+			return null;
+		}
+		return Key.key(string);
+	}
 
 	/**
 	 * Retrieves a Key object at the given index, ensuring the Key exists.
@@ -187,7 +200,9 @@ public interface MercuryArray {
 	 * @return The Key object at the specified index.
 	 * @throws IndexOutOfBoundsException if the index is invalid.
 	 */
-	@NotNull Key getKeySafe(int index);
+	default @NotNull Key getKeySafe(int index) {
+		return Key.key(getStringSafe(index));
+	}
 
 	/**
 	 * Retrieves a Material object at the given index.
@@ -195,7 +210,13 @@ public interface MercuryArray {
 	 * @param index The index of the Material object in the array.
 	 * @return The Material object at the specified index, or null if not found.
 	 */
-	@Nullable Material getMaterial(int index);
+	default @Nullable Material getMaterial(int index) {
+		String string = getString(index);
+		if (string == null) {
+			return null;
+		}
+		return Material.getMaterial(string);
+	}
 
 	/**
 	 * Retrieves a Material object at the given index, ensuring the Material exists.
@@ -204,7 +225,9 @@ public interface MercuryArray {
 	 * @return The Material object at the specified index.
 	 * @throws IndexOutOfBoundsException if the index is invalid.
 	 */
-	@NotNull Material getMaterialSafe(int index);
+	default @NotNull Material getMaterialSafe(int index) {
+		return Material.getMaterial(getString(index));
+	}
 
 	/**
 	 * Retrieves an EntityType object at the given index.
@@ -212,7 +235,13 @@ public interface MercuryArray {
 	 * @param index The index of the EntityType object in the array.
 	 * @return The EntityType object at the specified index, or null if not found.
 	 */
-	@Nullable EntityType getEntityType(int index);
+	default @Nullable EntityType getEntityType(int index) {
+		String string = getString(index);
+		if (string == null) {
+			return null;
+		}
+		return EntityType.fromName(string);
+	}
 
 	/**
 	 * Retrieves an EntityType object at the given index, ensuring the EntityType exists.
@@ -221,5 +250,7 @@ public interface MercuryArray {
 	 * @return The EntityType object at the specified index.
 	 * @throws IndexOutOfBoundsException if the index is invalid.
 	 */
-	@NotNull EntityType getEntityTypeSafe(int index);
+	default @NotNull EntityType getEntityTypeSafe(int index) {
+		return EntityType.fromName(getString(index));
+	}
 }

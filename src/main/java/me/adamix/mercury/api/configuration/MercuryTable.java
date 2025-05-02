@@ -150,7 +150,7 @@ public interface MercuryTable {
 	 * @return The Integer value corresponding to the key.
 	 * @throws MissingConfigurationPropertyException if the value is not found.
 	 */
-	default @NotNull Integer getIntegerSafe(@NotNull String dottedKey) {
+	default int getIntegerSafe(@NotNull String dottedKey) {
 		Integer value = getInteger(dottedKey);
 		if (value == null) {
 			throw new MissingConfigurationPropertyException(dottedKey, name());
@@ -165,7 +165,7 @@ public interface MercuryTable {
 	 * @return The Long value corresponding to the key.
 	 * @throws MissingConfigurationPropertyException if the value is not found.
 	 */
-	default @NotNull Long getLongSafe(@NotNull String dottedKey) {
+	default long getLongSafe(@NotNull String dottedKey) {
 		Long value = getLong(dottedKey);
 		if (value == null) {
 			throw new MissingConfigurationPropertyException(dottedKey, name());
@@ -180,7 +180,7 @@ public interface MercuryTable {
 	 * @return The Float value corresponding to the key.
 	 * @throws MissingConfigurationPropertyException if the value is not found.
 	 */
-	default @NotNull Float getFloatSafe(@NotNull String dottedKey) {
+	default float getFloatSafe(@NotNull String dottedKey) {
 		Float value = getFloat(dottedKey);
 		if (value == null) {
 			throw new MissingConfigurationPropertyException(dottedKey, name());
@@ -195,7 +195,7 @@ public interface MercuryTable {
 	 * @return The Double value corresponding to the key.
 	 * @throws MissingConfigurationPropertyException if the value is not found.
 	 */
-	default @NotNull Double getDoubleSafe(@NotNull String dottedKey) {
+	default double getDoubleSafe(@NotNull String dottedKey) {
 		Double value = getDouble(dottedKey);
 		if (value == null) {
 			throw new MissingConfigurationPropertyException(dottedKey, name());
@@ -210,7 +210,7 @@ public interface MercuryTable {
 	 * @return The Boolean value corresponding to the key.
 	 * @throws MissingConfigurationPropertyException if the value is not found.
 	 */
-	default @NotNull Boolean getBooleanSafe(@NotNull String dottedKey) {
+	default boolean getBooleanSafe(@NotNull String dottedKey) {
 		Boolean value = getBoolean(dottedKey);
 		if (value == null) {
 			throw new MissingConfigurationPropertyException(dottedKey, name());
