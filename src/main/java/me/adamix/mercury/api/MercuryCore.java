@@ -1,5 +1,6 @@
 package me.adamix.mercury.api;
 
+import me.adamix.mercury.api.builders.MercuryBuilderFactory;
 import me.adamix.mercury.api.data.DataInstance;
 import me.adamix.mercury.api.data.DataManager;
 import me.adamix.mercury.api.entity.MercuryEntity;
@@ -11,7 +12,6 @@ import me.adamix.mercury.api.task.MercuryTask;
 import me.adamix.mercury.api.translation.MercuryTranslation;
 import me.adamix.mercury.api.translation.TranslationManager;
 import org.apache.commons.lang3.NotImplementedException;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
@@ -49,6 +49,11 @@ public abstract class MercuryCore {
 	@ApiStatus.Internal
 	public abstract void unload();
 
+	/**
+	 * Retrieves instance of the builder factory.
+	 * @return {@link MercuryBuilderFactory} instance.
+	 */
+	public abstract @NotNull MercuryBuilderFactory getBuilderFactory();
 
 	/**
 	 * Retrieves instance of the core plugin.
@@ -95,6 +100,14 @@ public abstract class MercuryCore {
 	public abstract MercuryProtocol getProtocol();
 
 
+	/**
+	 * Retrieves instance of the builder factory.
+	 * @return {@link MercuryBuilderFactory} instance.
+	 * @throws IllegalStateException if core instance has not been set.
+	 */
+	public static @NotNull MercuryBuilderFactory builders() {
+		return getInstance().getBuilderFactory();
+	}
 
 	/**
 	 * Retrieves translation manager instance.

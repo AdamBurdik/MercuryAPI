@@ -26,9 +26,9 @@ public interface MercuryItem {
 	/**
 	 * Returns the key that identifies the blueprint this item was created from.
 	 *
-	 * @return the {@link Key} of the item's blueprint
+	 * @return the {@link Key} of the item blueprint, or null if item was not created from blueprint.
 	 */
-	@NotNull
+	@Nullable
 	Key blueprintKey();
 
 	/**
