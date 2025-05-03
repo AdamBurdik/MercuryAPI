@@ -1,5 +1,6 @@
 package me.adamix.mercury.api.item;
 
+import me.adamix.mercury.api.MercuryCore;
 import me.adamix.mercury.api.item.component.MercuryItemComponent;
 import org.bukkit.Material;
 import org.jetbrains.annotations.NotNull;
@@ -19,4 +20,12 @@ public interface MercuryItemBuilder {
 	 * @throws IllegalStateException if a required field is missing.
 	 */
 	@NotNull MercuryItem build();
+
+	/**
+	 * Shortcut for retrieving item builder.
+	 * @return {@link MercuryItemBuilder} instance.
+	 */
+	static @NotNull MercuryItemBuilder get() {
+		return MercuryCore.builders().item();
+	}
 }

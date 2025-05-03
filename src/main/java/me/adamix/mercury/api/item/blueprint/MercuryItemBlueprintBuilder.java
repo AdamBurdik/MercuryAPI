@@ -1,5 +1,6 @@
 package me.adamix.mercury.api.item.blueprint;
 
+import me.adamix.mercury.api.MercuryCore;
 import me.adamix.mercury.api.item.component.MercuryItemComponent;
 import net.kyori.adventure.key.Key;
 import org.bukkit.Material;
@@ -18,4 +19,12 @@ public interface MercuryItemBlueprintBuilder {
 	 * @throws IllegalStateException if a required field is missing.
 	 */
 	@NotNull MercuryItemBlueprint build();
+
+	/**
+	 * Shortcut for retrieving item blueprint builder.
+	 * @return {@link MercuryItemBlueprintBuilder} instance.
+	 */
+	static @NotNull MercuryItemBlueprintBuilder get() {
+		return MercuryCore.builders().itemBlueprint();
+	}
 }
