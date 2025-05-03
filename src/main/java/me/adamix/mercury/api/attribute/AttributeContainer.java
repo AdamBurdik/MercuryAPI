@@ -44,6 +44,12 @@ public interface AttributeContainer {
 	void clear();
 
 	/**
+	 * Merges all attribute instances from this and specified container, into specified container.
+	 * @param attributeContainer the attribute container to merge stuff into
+	 */
+	void merge(@NotNull AttributeContainer attributeContainer);
+
+	/**
 	 * Applies the attributes to the provided {@link MercuryEntity}.
 	 *
 	 * @param entity the entity to apply the attributes to
