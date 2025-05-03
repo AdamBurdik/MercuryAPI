@@ -1,6 +1,7 @@
 package me.adamix.mercury.api.item.component;
 
 
-public interface MercuryItemComponent {
-	String name();
+import me.adamix.mercury.api.component.MercuryComponent;
+
+public interface MercuryItemComponent extends MercuryComponent {
 }
