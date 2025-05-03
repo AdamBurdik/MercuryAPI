@@ -1,5 +1,6 @@
 package me.adamix.mercury.api.item;
 
+import me.adamix.mercury.api.attribute.AttributeContainer;
 import me.adamix.mercury.api.item.component.MercuryItemComponent;
 import me.adamix.mercury.api.player.MercuryPlayer;
 import net.kyori.adventure.key.Key;
@@ -20,40 +21,42 @@ public interface MercuryItem {
 	 *
 	 * @return the unique {@link UUID} of the item
 	 */
-	@NotNull
-	UUID uniqueId();
+	@NotNull UUID uniqueId();
 
 	/**
 	 * Returns the key that identifies the blueprint this item was created from.
 	 *
 	 * @return the {@link Key} of the item blueprint, or null if item was not created from blueprint.
 	 */
-	@Nullable
-	Key blueprintKey();
+	@Nullable Key blueprintKey();
 
 	/**
 	 * Returns the display name of this item.
 	 *
 	 * @return the name of the item
 	 */
-	@NotNull
-	String name();
+	@NotNull String name();
 
 	/**
 	 * Returns the material used to represent this item in Minecraft.
 	 *
 	 * @return the {@link Material} of the item
 	 */
-	@NotNull
-	Material material();
+	@NotNull Material material();
 
 	/**
 	 * Returns all components attached to this item.
 	 *
 	 * @return an array of {@link MercuryItemComponent}
 	 */
-	@NotNull
-	MercuryItemComponent[] components();
+	@NotNull MercuryItemComponent[] components();
+
+	/**
+	 * Returns attribute container of this item.
+	 *
+	 * @return {@link AttributeContainer} instance.
+	 */
+	@Nullable AttributeContainer attributeContainer();
 
 	/**
 	 * Checks if the item has a specific type of component.
@@ -65,9 +68,10 @@ public interface MercuryItem {
 
 	/**
 	 * Retrieve specific component from the item.
+	 *
 	 * @param clazz the class of the component.
+	 * @param <T>   the type of the component
 	 * @return {@link MercuryItemComponent} instance, or null.
-	 * @param <T> the type of the component
 	 */
 	<T extends MercuryItemComponent> @Nullable T getComponent(Class<T> clazz);
 
@@ -77,6 +81,5 @@ public interface MercuryItem {
 	 * @param player the player context used for rendering or personalization
 	 * @return the bukkit {@link ItemStack}.
 	 */
-	@NotNull
-	ItemStack toItemStack(MercuryPlayer player);
+	@NotNull ItemStack toItemStack(MercuryPlayer player);
 }
