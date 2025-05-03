@@ -1,10 +1,10 @@
 package me.adamix.mercury.api.configuration;
 
+import me.adamix.mercury.api.entity.type.MercuryEntityType;
 import me.adamix.mercury.api.exception.configuration.MissingConfigurationPropertyException;
 import me.adamix.mercury.api.math.MercuryPosition;
 import net.kyori.adventure.key.Key;
 import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -323,29 +323,28 @@ public interface MercuryTable {
 	}
 
 	/**
-	 * Retrieves an EntityType associated with the given dotted key.
+	 * Retrieves an MercuryEntityType associated with the given dotted key.
 	 *
 	 * @param dottedKey The dotted key representing the property.
-	 * @return The EntityType corresponding to the key, or null if not found.
+	 * @return The MercuryEntityType corresponding to the key, or null if not found.
 	 */
-	default @Nullable EntityType getEntityType(@NotNull String dottedKey) {
+	default @Nullable MercuryEntityType getEntityType(@NotNull String dottedKey) {
 		String value = getString(dottedKey);
 		if (value == null) {
 			return null;
 		}
-		//noinspection UnstableApiUsage
-		return EntityType.fromName(value);
+		return MercuryEntityType.valueOf(value.toUpperCase());
 	}
 
 	/**
-	 * Retrieves an EntityType associated with the given dotted key, ensuring the entity type exists.
+	 * Retrieves an MercuryEntityType associated with the given dotted key, ensuring the entity type exists.
 	 *
 	 * @param dottedKey The dotted key representing the property.
-	 * @return The EntityType corresponding to the key.
+	 * @return The MercuryEntityType corresponding to the key.
 	 * @throws MissingConfigurationPropertyException if the entity type is not found.
 	 */
-	default @NotNull EntityType getEntityTypeSafe(@NotNull String dottedKey) {
-		EntityType value = getEntityType(dottedKey);
+	default @NotNull MercuryEntityType getEntityTypeSafe(@NotNull String dottedKey) {
+		MercuryEntityType value = getEntityType(dottedKey);
 		if (value == null) {
 			throw new MissingConfigurationPropertyException(dottedKey, name());
 		}

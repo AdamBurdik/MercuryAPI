@@ -1,10 +1,12 @@
 package me.adamix.mercury.api.configuration;
 
+import me.adamix.mercury.api.entity.type.MercuryEntityType;
 import net.kyori.adventure.key.Key;
 import org.bukkit.Material;
-import org.bukkit.entity.EntityType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Locale;
 
 
 /**
@@ -230,27 +232,27 @@ public interface MercuryArray {
 	}
 
 	/**
-	 * Retrieves an EntityType object at the given index.
+	 * Retrieves an MercuryEntityType object at the given index.
 	 *
-	 * @param index The index of the EntityType object in the array.
-	 * @return The EntityType object at the specified index, or null if not found.
+	 * @param index The index of the MercuryEntityType object in the array.
+	 * @return The MercuryEntityType object at the specified index, or null if not found.
 	 */
-	default @Nullable EntityType getEntityType(int index) {
+	default @Nullable MercuryEntityType getEntityType(int index) {
 		String string = getString(index);
 		if (string == null) {
 			return null;
 		}
-		return EntityType.fromName(string);
+		return MercuryEntityType.valueOf(string.toUpperCase());
 	}
 
 	/**
-	 * Retrieves an EntityType object at the given index, ensuring the EntityType exists.
+	 * Retrieves an MercuryEntityType object at the given index, ensuring the MercuryEntityType exists.
 	 *
-	 * @param index The index of the EntityType object in the array.
-	 * @return The EntityType object at the specified index.
+	 * @param index The index of the MercuryEntityType object in the array.
+	 * @return The MercuryEntityType object at the specified index.
 	 * @throws IndexOutOfBoundsException if the index is invalid.
 	 */
-	default @NotNull EntityType getEntityTypeSafe(int index) {
-		return EntityType.fromName(getString(index));
+	default @NotNull MercuryEntityType getEntityTypeSafe(int index) {
+		return MercuryEntityType.valueOf(getString(index).toUpperCase(Locale.ROOT));
 	}
 }
