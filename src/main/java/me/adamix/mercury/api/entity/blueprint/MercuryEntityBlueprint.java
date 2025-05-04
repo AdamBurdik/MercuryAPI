@@ -3,6 +3,7 @@ package me.adamix.mercury.api.entity.blueprint;
 import me.adamix.mercury.api.attribute.AttributeContainer;
 import me.adamix.mercury.api.entity.MercuryEntity;
 import me.adamix.mercury.api.entity.component.MercuryEntityComponent;
+import me.adamix.mercury.api.entity.type.MercuryEntityType;
 import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -17,7 +18,13 @@ public interface MercuryEntityBlueprint {
 	 *
 	 * @return the {@link Key} of the blueprint
 	 */
-	@NotNull Key blueprintKey();
+	@NotNull Key key();
+
+	/**
+	 * Returns the type of this blueprint.
+	 * @return the {@link Key} of this blueprint.
+	 */
+	@NotNull MercuryEntityType type();
 
 	/**
 	 * Returns all components attached to this blueprint.
