@@ -3,9 +3,11 @@ package me.adamix.mercury.api.entity.blueprint;
 import me.adamix.mercury.api.MercuryCore;
 import me.adamix.mercury.api.attribute.AttributeContainer;
 import me.adamix.mercury.api.entity.component.MercuryEntityComponent;
+import me.adamix.mercury.api.entity.type.MercuryEntityType;
 import org.jetbrains.annotations.NotNull;
 
 public interface MercuryEntityBlueprintBuilder {
+	@NotNull MercuryEntityBlueprintBuilder type(@NotNull MercuryEntityType type);
 	@NotNull MercuryEntityBlueprintBuilder components(@NotNull MercuryEntityComponent... components);
 	@NotNull MercuryEntityBlueprintBuilder health(long health);
 	@NotNull MercuryEntityBlueprintBuilder maxHealth(long maxHealth);
