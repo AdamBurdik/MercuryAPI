@@ -2,6 +2,7 @@ package me.adamix.mercury.api.entity;
 
 import me.adamix.mercury.api.attribute.AttributeContainer;
 import me.adamix.mercury.api.entity.component.MercuryEntityComponent;
+import me.adamix.mercury.api.entity.type.MercuryEntityType;
 import me.adamix.mercury.api.math.MercuryPosition;
 import me.adamix.mercury.api.player.MercuryPlayer;
 import org.bukkit.World;
@@ -45,7 +46,7 @@ public interface MercuryEntity {
 
 	/**
 	 * Spawns entity in specified world.<br>
-	 * Should be called to spawn entity. For spawning use {@link EntityManager#spawn()}
+	 * Should be called to spawn entity. For spawning use {@link EntityManager#spawn(MercuryEntity, World, MercuryPosition)}
 	 * @param world World to spawn entity in.
 	 * @param position Position to spawn entity at.
 	 */
@@ -56,6 +57,18 @@ public interface MercuryEntity {
 	 * Called after new world is set.
 	 */
 	void spawn();
+
+	/**
+	 * Called after entity is loaded back to world.<br>
+	 * Usually after server starts.
+	 */
+	void load();
+
+	/**
+	 * Returns type of this entity.
+	 * @return Entity type.
+	 */
+	@NotNull MercuryEntityType type();
 
 	/**
 	 * Returns whenever entity is alive.<br>
