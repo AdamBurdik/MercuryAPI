@@ -2,12 +2,16 @@ package me.adamix.mercury.api.entity;
 
 import me.adamix.mercury.api.attribute.AttributeContainer;
 import me.adamix.mercury.api.entity.component.MercuryEntityComponent;
+import me.adamix.mercury.api.math.MercuryPosition;
 import me.adamix.mercury.api.player.MercuryPlayer;
+import org.bukkit.World;
 import org.bukkit.entity.Entity;
+import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Represents interface for generic entity.
@@ -20,6 +24,38 @@ public interface MercuryEntity {
 	 * @return {@link Entity} instance or null
 	 */
 	@Nullable Entity bukkitEntity();
+
+	/**
+	 * Returns uuid of this entity.
+	 * @return Uuid of this entity, or null if entity has not been spawned yet.
+	 */
+	@Nullable UUID getUuid();
+
+	/**
+	 * Returns world of this entity.
+	 * @return {@link World} of this entity, or null if entity has not been spawned yet.
+	 */
+	@Nullable World getWorld();
+
+	/**
+	 * Returns current position of this entity.
+	 * @return {@link MercuryPosition} of this entity, or null if entity has not been spawned yet.
+	 */
+	@Nullable MercuryPosition getPosition();
+
+	/**
+	 * Spawns entity in specified world.<br>
+	 * Should be called to spawn entity. For spawning use {@link EntityManager#spawn()}
+	 * @param world World to spawn entity in.
+	 * @param position Position to spawn entity at.
+	 */
+	@ApiStatus.Internal
+	void setWorld(@NotNull World world, @NotNull MercuryPosition position);
+
+	/**
+	 * Called after new world is set.
+	 */
+	void spawn();
 
 	/**
 	 * Returns whenever entity is alive.<br>
@@ -113,4 +149,10 @@ public interface MercuryEntity {
 	 * @return {@link AttributeContainer} instance or null.
 	 */
 	@Nullable AttributeContainer attributeContainer();
+
+	/**
+	 * Returns long representing flags of this entity.
+	 * @return Flags of this entity, or 0 if no flags are present.
+	 */
+	long flags();
 }
