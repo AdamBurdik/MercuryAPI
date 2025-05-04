@@ -11,7 +11,6 @@ import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -101,7 +100,7 @@ public interface MercuryEntity {
 	 * Returns list of all components on this entity.
 	 * @return List of entity components.
 	 */
-	@NotNull List<MercuryEntityComponent> getComponents();
+	@NotNull Set<MercuryEntityComponent> getComponents();
 
 	/**
 	 * Adds component, if not already present, to this entity.
