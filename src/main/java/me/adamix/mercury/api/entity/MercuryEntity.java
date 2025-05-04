@@ -5,6 +5,7 @@ import me.adamix.mercury.api.entity.component.MercuryEntityComponent;
 import me.adamix.mercury.api.entity.type.MercuryEntityType;
 import me.adamix.mercury.api.math.MercuryPosition;
 import me.adamix.mercury.api.player.MercuryPlayer;
+import net.kyori.adventure.key.Key;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 import org.jetbrains.annotations.ApiStatus;
@@ -25,6 +26,12 @@ public interface MercuryEntity {
 	 * @return {@link Entity} instance or null
 	 */
 	@Nullable Entity bukkitEntity();
+
+	/**
+	 * Returns key of the blueprint this entity was built from.
+	 * @return {@link Key}, or null.
+	 */
+	@Nullable Key getBlueprintKey();
 
 	/**
 	 * Returns uuid of this entity.
