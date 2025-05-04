@@ -1,15 +1,15 @@
 package me.adamix.mercury.api.builders;
 
-import me.adamix.mercury.api.entity.MercuryEntityBuilder;
-import me.adamix.mercury.api.entity.blueprint.MercuryEntityBlueprintBuilder;
-import me.adamix.mercury.api.item.MercuryItemBuilder;
-import me.adamix.mercury.api.item.blueprint.MercuryItemBlueprintBuilder;
+import me.adamix.mercury.api.entity.EntityBuilder;
+import me.adamix.mercury.api.entity.blueprint.EntityBlueprintBuilder;
+import me.adamix.mercury.api.item.ItemBuilder;
+import me.adamix.mercury.api.item.blueprint.ItemBlueprintBuilder;
 import org.jetbrains.annotations.NotNull;
 
 public interface MercuryBuilderFactory {
-	@NotNull MercuryItemBlueprintBuilder itemBlueprint();
-	@NotNull MercuryItemBuilder item();
+	@NotNull ItemBlueprintBuilder itemBlueprint();
+	@NotNull ItemBuilder item();
 
-	@NotNull MercuryEntityBuilder entity();
-	@NotNull MercuryEntityBlueprintBuilder entityBlueprint();
+	@NotNull EntityBuilder entity();
+	@NotNull EntityBlueprintBuilder entityBlueprint();
 }

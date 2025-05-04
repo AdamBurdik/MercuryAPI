@@ -6,13 +6,13 @@ import me.adamix.mercury.api.entity.component.MercuryEntityComponent;
 import me.adamix.mercury.api.entity.type.MercuryEntityType;
 import org.jetbrains.annotations.NotNull;
 
-public interface MercuryEntityBlueprintBuilder {
-	@NotNull MercuryEntityBlueprintBuilder type(@NotNull MercuryEntityType type);
-	@NotNull MercuryEntityBlueprintBuilder components(@NotNull MercuryEntityComponent... components);
-	@NotNull MercuryEntityBlueprintBuilder health(long health);
-	@NotNull MercuryEntityBlueprintBuilder maxHealth(long maxHealth);
-	@NotNull MercuryEntityBlueprintBuilder attributes(@NotNull AttributeContainer attributeContainer);
-	@NotNull MercuryEntityBlueprintBuilder flags(long flags);
+public interface EntityBlueprintBuilder {
+	@NotNull EntityBlueprintBuilder type(@NotNull MercuryEntityType type);
+	@NotNull EntityBlueprintBuilder components(@NotNull MercuryEntityComponent... components);
+	@NotNull EntityBlueprintBuilder health(long health);
+	@NotNull EntityBlueprintBuilder maxHealth(long maxHealth);
+	@NotNull EntityBlueprintBuilder attributes(@NotNull AttributeContainer attributeContainer);
+	@NotNull EntityBlueprintBuilder flags(long flags);
 
 	/**
 	 * Builds the entity blueprint from the provided fields.
@@ -24,9 +24,9 @@ public interface MercuryEntityBlueprintBuilder {
 
 	/**
 	 * Shortcut for retrieving item builder.
-	 * @return {@link MercuryEntityBlueprintBuilder} instance.
+	 * @return {@link EntityBlueprintBuilder} instance.
 	 */
-	static @NotNull MercuryEntityBlueprintBuilder get() {
+	static @NotNull EntityBlueprintBuilder get() {
 		return MercuryCore.builders().entityBlueprint();
 	}
 }

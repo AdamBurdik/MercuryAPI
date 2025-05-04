@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "me.adamix.mercury.api"
-version = "0.1.10"
+version = "0.2.0"
 
 repositories {
     mavenCentral()

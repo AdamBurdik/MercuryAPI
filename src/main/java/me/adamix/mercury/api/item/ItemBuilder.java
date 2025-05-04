@@ -8,12 +8,12 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-public interface MercuryItemBuilder {
-	@NotNull MercuryItemBuilder uuid(@NotNull UUID uuid);
-	@NotNull MercuryItemBuilder name(@NotNull String name);
-	@NotNull MercuryItemBuilder material(@NotNull Material material);
-	@NotNull MercuryItemBuilder attributes(@NotNull AttributeContainer attributeContainer);
-	@NotNull MercuryItemBuilder components(@NotNull MercuryItemComponent... components);
+public interface ItemBuilder {
+	@NotNull ItemBuilder uuid(@NotNull UUID uuid);
+	@NotNull ItemBuilder name(@NotNull String name);
+	@NotNull ItemBuilder material(@NotNull Material material);
+	@NotNull ItemBuilder attributes(@NotNull AttributeContainer attributeContainer);
+	@NotNull ItemBuilder components(@NotNull MercuryItemComponent... components);
 
 	/**
 	 * Builds the item from the provided fields.
@@ -25,9 +25,9 @@ public interface MercuryItemBuilder {
 
 	/**
 	 * Shortcut for retrieving item builder.
-	 * @return {@link MercuryItemBuilder} instance.
+	 * @return {@link ItemBuilder} instance.
 	 */
-	static @NotNull MercuryItemBuilder get() {
+	static @NotNull ItemBuilder get() {
 		return MercuryCore.builders().item();
 	}
 }

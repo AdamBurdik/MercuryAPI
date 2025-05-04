@@ -7,12 +7,12 @@ import net.kyori.adventure.key.Key;
 import org.bukkit.Material;
 import org.jetbrains.annotations.NotNull;
 
-public interface MercuryItemBlueprintBuilder {
-	@NotNull MercuryItemBlueprintBuilder key(@NotNull Key key);
-	@NotNull MercuryItemBlueprintBuilder name(@NotNull String name);
-	@NotNull MercuryItemBlueprintBuilder material(@NotNull Material material);
-	@NotNull MercuryItemBlueprintBuilder attributes(@NotNull AttributeContainer attributeContainer);
-	@NotNull MercuryItemBlueprintBuilder components(@NotNull MercuryItemComponent... components);
+public interface ItemBlueprintBuilder {
+	@NotNull ItemBlueprintBuilder key(@NotNull Key key);
+	@NotNull ItemBlueprintBuilder name(@NotNull String name);
+	@NotNull ItemBlueprintBuilder material(@NotNull Material material);
+	@NotNull ItemBlueprintBuilder attributes(@NotNull AttributeContainer attributeContainer);
+	@NotNull ItemBlueprintBuilder components(@NotNull MercuryItemComponent... components);
 
 	/**
 	 * Builds the item blueprint from the provided fields.
@@ -24,9 +24,9 @@ public interface MercuryItemBlueprintBuilder {
 
 	/**
 	 * Shortcut for retrieving item blueprint builder.
-	 * @return {@link MercuryItemBlueprintBuilder} instance.
+	 * @return {@link ItemBlueprintBuilder} instance.
 	 */
-	static @NotNull MercuryItemBlueprintBuilder get() {
+	static @NotNull ItemBlueprintBuilder get() {
 		return MercuryCore.builders().itemBlueprint();
 	}
 }
