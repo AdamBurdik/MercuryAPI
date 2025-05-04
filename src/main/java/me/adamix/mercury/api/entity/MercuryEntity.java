@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -82,7 +83,7 @@ public interface MercuryEntity {
 	 * Returns list of players that sees this entity.
 	 * @return List of players
 	 */
-	@NotNull List<MercuryPlayer> getViewers();
+	@NotNull Set<MercuryPlayer> getViewers();
 
 	/**
 	 * Adds player to viewer list.
