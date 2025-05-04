@@ -3,7 +3,11 @@ package me.adamix.mercury.api;
 import me.adamix.mercury.api.builders.MercuryBuilderFactory;
 import me.adamix.mercury.api.data.DataInstance;
 import me.adamix.mercury.api.data.DataManager;
+import me.adamix.mercury.api.entity.EntityManager;
 import me.adamix.mercury.api.entity.MercuryEntity;
+import me.adamix.mercury.api.entity.blueprint.EntityBlueprintManager;
+import me.adamix.mercury.api.item.ItemManager;
+import me.adamix.mercury.api.item.blueprint.ItemBlueprintManager;
 import me.adamix.mercury.api.placeholder.PlaceholderManager;
 import me.adamix.mercury.api.player.MercuryPlayer;
 import me.adamix.mercury.api.player.PlayerManager;
@@ -13,6 +17,7 @@ import me.adamix.mercury.api.translation.MercuryTranslation;
 import me.adamix.mercury.api.translation.TranslationManager;
 import org.apache.commons.lang3.NotImplementedException;
 import org.bukkit.Location;
+import org.bukkit.entity.Item;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -91,6 +96,33 @@ public abstract class MercuryCore {
 	@ApiStatus.Internal
 	public abstract PlaceholderManager getPlaceholderManager();
 
+	/**
+	 * Retrieves entity manager instance.
+	 * @return {@link EntityManager} instance.
+	 */
+	@ApiStatus.Internal
+	public abstract EntityManager getEntityManager();
+
+	/**
+	 * Retrieves entity blueprint manager instance.
+	 * @return {@link EntityBlueprintManager} instance.
+	 */
+	@ApiStatus.Internal
+	public abstract EntityBlueprintManager getEntityBlueprintManager();
+
+	/**
+	 * Retrieves item manager instance.
+	 * @return {@link ItemManager} instance.
+	 */
+	@ApiStatus.Internal
+	public abstract ItemManager getItemManager();
+
+	/**
+	 * Retrieves item blueprint manager instance.
+	 * @return {@link ItemBlueprintManager} instance.
+	 */
+	@ApiStatus.Internal
+	public abstract ItemBlueprintManager getItemBlueprintManager();
 
 	/**
 	 * Retrieves protocol instance.
@@ -98,6 +130,9 @@ public abstract class MercuryCore {
 	 */
 	@ApiStatus.Internal
 	public abstract MercuryProtocol getProtocol();
+
+
+
 
 
 	/**
@@ -137,6 +172,46 @@ public abstract class MercuryCore {
 	@ApiStatus.Internal
 	public static PlaceholderManager placeholderManager() {
 		return getInstance().getPlaceholderManager();
+	}
+
+	/**
+	 * Retrieves entity manager instance.
+	 * @return {@link EntityManager} instance.
+	 * @throws IllegalStateException if core instance has not been set.
+	 */
+	@ApiStatus.Internal
+	public static EntityManager entityManager() {
+		return getInstance().getEntityManager();
+	}
+
+	/**
+	 * Retrieves entity blueprint manager instance.
+	 * @return {@link EntityBlueprintManager} instance.
+	 * @throws IllegalStateException if core instance has not been set.
+	 */
+	@ApiStatus.Internal
+	public static EntityBlueprintManager entityBlueprintManager() {
+		return getInstance().getEntityBlueprintManager();
+	}
+
+	/**
+	 * Retrieves item manager instance.
+	 * @return {@link ItemManager} instance.
+	 * @throws IllegalStateException if core instance has not been set.
+	 */
+	@ApiStatus.Internal
+	public static ItemManager itemManager() {
+		return getInstance().getItemManager();
+	}
+
+	/**
+	 * Retrieves item blueprint manager instance.
+	 * @return {@link ItemBlueprintManager} instance.
+	 * @throws IllegalStateException if core instance has not been set.
+	 */
+	@ApiStatus.Internal
+	public static ItemBlueprintManager itemBlueprintManager() {
+		return getInstance().getItemBlueprintManager();
 	}
 
 	/**
