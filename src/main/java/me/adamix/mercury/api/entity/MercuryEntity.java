@@ -1,5 +1,6 @@
 package me.adamix.mercury.api.entity;
 
+import me.adamix.mercury.api.attribute.AttributeContainer;
 import me.adamix.mercury.api.entity.component.MercuryEntityComponent;
 import me.adamix.mercury.api.player.MercuryPlayer;
 import org.bukkit.entity.Entity;
@@ -72,4 +73,44 @@ public interface MercuryEntity {
 	 * @param <T> Type of the component extending {@link MercuryEntityComponent}.
 	 */
 	<T extends MercuryEntityComponent> void removeComponent(@NotNull Class<T> clazz);
+
+	/**
+	 * Returns current health of this entity.
+	 *
+	 * @return Current health.
+	 */
+	long getHealth();
+
+	/**
+	 * Returns maximum value of health entity can have.
+	 * @return Maximum health value.
+	 */
+	long getMaxHealth();
+
+	/**
+	 * Sets current health to specified value.
+	 *
+	 * @param health New health value to set.
+	 */
+	void setHealth(long health);
+
+	/**
+	 * Sets maximum health value of this entity.
+	 * @param maxHealth New maximum health value.
+	 */
+	void setMaxHealth(long maxHealth);
+
+	/**
+	 * Changes current health by specified amount.
+	 *
+	 * @param amount Amount to change health by.
+	 */
+	void changeHealth(long amount);
+
+	/**
+	 * Returns attribute container.
+	 *
+	 * @return {@link AttributeContainer} instance or null.
+	 */
+	@Nullable AttributeContainer attributeContainer();
 }
