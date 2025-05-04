@@ -1,6 +1,7 @@
 package me.adamix.mercury.api.item.blueprint;
 
 import me.adamix.mercury.api.MercuryCore;
+import me.adamix.mercury.api.attribute.AttributeContainer;
 import me.adamix.mercury.api.item.component.MercuryItemComponent;
 import net.kyori.adventure.key.Key;
 import org.bukkit.Material;
@@ -10,6 +11,7 @@ public interface MercuryItemBlueprintBuilder {
 	@NotNull MercuryItemBlueprintBuilder key(@NotNull Key key);
 	@NotNull MercuryItemBlueprintBuilder name(@NotNull String name);
 	@NotNull MercuryItemBlueprintBuilder material(@NotNull Material material);
+	@NotNull MercuryItemBlueprintBuilder attributes(@NotNull AttributeContainer attributeContainer);
 	@NotNull MercuryItemBlueprintBuilder components(@NotNull MercuryItemComponent... components);
 
 	/**
