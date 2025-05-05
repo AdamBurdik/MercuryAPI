@@ -8,6 +8,8 @@ import net.kyori.adventure.key.Key;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Set;
+
 /**
  * Represents blueprint for {@link MercuryEntity} which contains all generic data.
  * Typically used to define entities loaded from config file.
@@ -31,7 +33,7 @@ public interface MercuryEntityBlueprint {
 	 *
 	 * @return an array of {@link MercuryEntityComponent}
 	 */
-	@NotNull MercuryEntityComponent[] components();
+	@NotNull Set<MercuryEntityComponent> components();
 
 	/**
 	 * Returns initial health of entity spawned from this blueprint.
